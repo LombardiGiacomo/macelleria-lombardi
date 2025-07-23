@@ -1,0 +1,117 @@
+:root {
+  --primary: #8b2e2e;
+  --light: #fff9f6;
+  --marmo: #f8f8f8;
+  --accent: #e0c7b3;
+  --bordeaux: #7b2d26;
+  --grigio: #555;
+  --nero: #1c1c1c;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: var(--marmo);
+  color: var(--nero);
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 20px;
+}
+
+/* Header/Navbar */
+.header {
+  background: var(--marmo);
+  border-bottom: 1px solid #eee;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+}
+
+.logo {
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: var(--bordeaux);
+}
+
+.nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: var(--nero);
+  font-weight: 500;
+}
+
+.nav a:hover {
+  color: var(--bordeaux);
+}
+
+.hamburger {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Hero */
+.hero {
+  background: var(--bordeaux);
+  color: white;
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+/* Sezioni */
+section {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.mappa iframe {
+  max-width: 100%;
+  border: none;
+}
+
+/* Footer */
+.footer {
+  background: var(--nero);
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9rem;
+  color: var(var(--marmo));
+}
+
+/* Responsive hamburger */
+@media (max-width: 768px) {
+  .nav {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    background: white;
+    top: 70px;
+    right: 20px;
+    border: 1px solid #ddd;
+    padding: 10px;
+  }
+
+  .nav.aperto {
+    display: flex;
+  }
+
+  .hamburger {
+    display: block;
+  }
+}
