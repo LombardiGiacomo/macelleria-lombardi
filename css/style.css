@@ -156,6 +156,8 @@ section {
     position: absolute;
     background: white;
     left: 0;
+    top: 100%;
+    right: 0;
     padding: 20px 0;
     text-align: center;
   }
@@ -170,7 +172,7 @@ section {
 
   .hero {
     padding: 60px 15px; /* meno spazio verticale */
-    height: 500px;
+    height: 300px;
   }
 
   .hero h1 {
