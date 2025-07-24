@@ -5,10 +5,3 @@ hamburger.addEventListener('click', () => {
   menu.classList.toggle('aperto');
 });
 
-// Cambia simbolo ☰ <-> ✖
-if (menu.classList.contains('aperto')) {
-  hamburger.textContent = '✖';
-} else {
-  hamburger.textContent = '☰';
-}
-
