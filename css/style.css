@@ -158,7 +158,6 @@ section {
     background: white;
     top: 100%;
     left: 0;
-    width: 100%;
     padding: 20px 0;
     text-align: center;
   }
@@ -173,7 +172,7 @@ section {
 
   .hero {
     /*padding: 60px 15px; /* meno spazio verticale */
-    height: 100px;
+    height: 300px;
     padding: 0 15px;
   }
 
