@@ -160,7 +160,6 @@ section {
   }
 
   .nav-mobile {
-    display: none;
     flex-direction: column;
     position: absolute;
     background: white;
@@ -170,11 +169,11 @@ section {
     text-align: center;
   }
 
-  .nav-mobile.aperto {
-    display: flex;
+  .menu-mobile-section {
+    display: none;
   }
 
-  .menu-mobile-section {
+  .menu-mobile-section.aperto {
     display: block;
   }
 

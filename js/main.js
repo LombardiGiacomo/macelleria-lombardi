@@ -1,10 +1,10 @@
-const navMobile = document.querySelector('.nav-mobile');
+const menu = document.getElementById('menuMobile');
 const hamburger = document.querySelector('.hamburger');
 
-navMobile.classList.toggle('aperto');
+menu.classList.toggle('aperto');
 
-// Cambia icona hamburger ↔ X
-if (navMobile.classList.contains('aperto')) {
+// Cambia simbolo ☰ <-> ✖
+if (menu.classList.contains('aperto')) {
   hamburger.textContent = '✖';
 } else {
   hamburger.textContent = '☰';
