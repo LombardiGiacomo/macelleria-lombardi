@@ -54,6 +54,10 @@ body {
   color: var(--bordeaux);
 }
 
+.menu-mobile-section {
+  display: none;
+}
+
 .hamburger {
   display: none;
   font-size: 24px;
@@ -150,20 +154,28 @@ section {
 
 /* Responsive hamburger */
 @media (max-width: 480px) {
+
   .nav {
+    display: none;
+  }
+
+  .nav-mobile {
     display: none;
     flex-direction: column;
     position: absolute;
     background: white;
     left: 0;
-    top: 100%;
     right: 0;
     padding: 20px 0;
     text-align: center;
   }
 
-  .nav.aperto {
+  .nav-mobile.aperto {
     display: flex;
+  }
+
+  .menu-mobile-section {
+    display: block;
   }
 
   .hamburger {
