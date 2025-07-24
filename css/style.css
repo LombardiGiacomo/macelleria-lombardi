@@ -171,9 +171,8 @@ section {
   }
 
   .hero {
-    /*padding: 60px 15px; /* meno spazio verticale */
-    height: 300px;
-    padding: 0 15px;
+    padding: 60px 15px; /* meno spazio verticale */
+    height: 500px;
   }
 
   .hero h1 {
