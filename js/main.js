@@ -1,7 +1,9 @@
 const menu = document.getElementById('menuMobile');
 const hamburger = document.querySelector('.hamburger');
 
-menu.classList.toggle('aperto');
+hamburger.addEventListener('click', () => {
+  menu.classList.toggle('aperto');
+});
 
 // Cambia simbolo ☰ <-> ✖
 if (menu.classList.contains('aperto')) {
@@ -9,3 +11,4 @@ if (menu.classList.contains('aperto')) {
 } else {
   hamburger.textContent = '☰';
 }
+
