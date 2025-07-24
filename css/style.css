@@ -64,9 +64,18 @@ body {
 .hero {
   color: white;
   background-color: var(--nero);
+  height: 650px;
+/*
+  background-image: url('../img/hero.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  padding: 300px 20px;
-  height: 500px;
+  padding: 0 20px;
 }
 
 .hero h1 {
@@ -141,7 +150,7 @@ section {
 }
 
 /* Responsive hamburger */
-@media (max-width: 768px) {
+@media (max-width: 480px) {
   .nav {
     display: none;
     flex-direction: column;
@@ -163,7 +172,20 @@ section {
 
   .hero {
     /*padding: 60px 15px; /* meno spazio verticale */
-    height: 250px;
-    font-size: 1.8rem;  /* testo più piccolo */
+    height: 200px;
+    padding: 0 15px;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+  }
+
+  .btn-telefono {
+    font-size: 1rem;
+    padding: 10px 20px;
   }
 }
