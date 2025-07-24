@@ -173,8 +173,16 @@ section {
     display: none;
   }
 
+  .menu-mobile-section {
+    max-height: 0;
+    overflow: hidden;
+    background: white;
+    transition: max-height 0.4s ease;
+  }
+
+  /* Quando aperto, estende l'altezza */
   .menu-mobile-section.aperto {
-    display: block;
+    max-height: 300px; /* quanto spazio vuoi far aprire */
   }
 
   .hamburger {
