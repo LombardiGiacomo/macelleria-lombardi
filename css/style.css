@@ -11,7 +11,6 @@
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background: var(--marmo);
   color: var(--nero);
   line-height: 1.6;
 }
@@ -45,10 +44,10 @@ body {
 }
 
 .nav a {
-  margin-left: 20px;
+  margin-left: 50px;
   text-decoration: none;
   color: var(--nero);
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .nav a:hover {
@@ -63,21 +62,65 @@ body {
 
 /* Hero */
 .hero {
-  background: var(--bordeaux);
   color: white;
+  background-color: var(--nero);
   text-align: center;
-  padding: 80px 20px;
+  padding: 300px 20px;
+  height: 500px;
 }
 
 .hero h1 {
-  font-size: 2.5rem;
+  font-size: 4.5rem;
   margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 3rem;
+  margin-bottom: 5px;
+}
+
+.btn-telefono {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 30px;
+  background-color: var(--bordeaux);
+  color: white;
+  font-weight: 600;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease;
+}
+
+.btn-telefono:hover {
+  background-color: var(--primary);
+}
+
+.orari {
+  border: 2px solid var(--bordeaux);
+  padding: 30px;
+  max-width: 500px;
+  margin: 60px auto;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.orari h2 {
+  text-align: center;
+  font-size: 1.6rem;
+  color: var(--bordeaux);
+  margin-bottom: 20px;
+}
+
+.orari-lista{
+  list-style: none;
+  text-align: center;
 }
 
 /* Sezioni */
 section {
   padding: 60px 20px;
   text-align: center;
+  scroll-margin-top: 80px;
 }
 
 .mappa iframe {
@@ -87,11 +130,14 @@ section {
 
 /* Footer */
 .footer {
-  background: var(--nero);
   text-align: center;
   padding: 20px;
   font-size: 0.9rem;
   color: var(var(--marmo));
+}
+
+.contatti{
+  background-image: url('../img/marmo2.jpg');
 }
 
 /* Responsive hamburger */
@@ -113,5 +159,11 @@ section {
 
   .hamburger {
     display: block;
+  }
+
+  .hero {
+    /*padding: 60px 15px; /* meno spazio verticale */
+    height: 250px;
+    font-size: 1.8rem;  /* testo più piccolo */
   }
 }
