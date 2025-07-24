@@ -1,6 +1,11 @@
-const hamburger = document.getElementById('hamburger');
-const nav = document.getElementById('nav');
+const navMobile = document.querySelector('.nav-mobile');
+const hamburger = document.querySelector('.hamburger');
 
-hamburger.addEventListener('click', () => {
-  nav.classList.toggle('aperto');
-});
+navMobile.classList.toggle('aperto');
+
+// Cambia icona hamburger ↔ X
+if (navMobile.classList.contains('aperto')) {
+  hamburger.textContent = '✖';
+} else {
+  hamburger.textContent = '☰';
+}
