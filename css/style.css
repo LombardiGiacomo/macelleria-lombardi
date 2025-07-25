@@ -80,6 +80,7 @@ body {
   font-weight: 600;
   color: var(--nero);
   text-decoration: none;
+  text-align: center;
 }
 
 .menuMobile a:hover {
