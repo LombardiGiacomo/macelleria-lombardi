@@ -23,7 +23,7 @@ body {
 
 /* Header/Navbar */
 .header {
-  background: yellow;
+  background: var(--marmo);
   border-bottom: 1px solid #eee;
   position: sticky;
   top: 0;
@@ -55,20 +55,14 @@ body {
 }
 
 .menuMobile{
-  position: fixed;
-  top: 70px; /* Altezza stimata dell'header */
   left: 0;
-  width: 100vw;
-  height: calc(100vh - 70px);
+  width: 100%;
   background: white;
-  z-index: 99; /* Deve essere inferiore a z-index del header (10) */
-  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 2rem;
-  padding: 2rem;
-  transition: all 0.3s ease;
+  display: none;
 }
 
 .menuMobile.open{
