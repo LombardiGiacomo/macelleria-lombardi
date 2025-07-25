@@ -23,7 +23,7 @@ body {
 
 /* Header/Navbar */
 .header {
-  background: var(--marmo);
+  background: yellow;
   border-bottom: 1px solid #eee;
   position: sticky;
   top: 0;
