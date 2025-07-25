@@ -59,20 +59,10 @@ body {
 }
 
 .menuMobile{
-  position: absolute;
-  top: 100%; /* parte subito dopo l'header */
-  left: 0;
-  width: 100vw;
-  height: calc(100vh - 100%);
-  background: white;
-  z-index: 9;
   display: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
 }
 
+/*
 .menuMobile a {
   font-size: 1.5rem;
   font-weight: 600;
@@ -82,7 +72,7 @@ body {
 
 .menuMobile a:hover {
   color: var(--bordeaux);
-}
+}*/
 
 /* Hero */
 .hero {
@@ -185,7 +175,6 @@ section {
     width: 2em;
     height: 1.5em;
     z-index: 110;
-    /*display: none;*/
     cursor: pointer;
     right: 10%;
     position: absolute;
