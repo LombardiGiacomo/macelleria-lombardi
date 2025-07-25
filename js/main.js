@@ -1,7 +1,8 @@
-const menu = document.getElementById('menuMobile');
-const hamburger = document.querySelector('.hamburger');
+const menu = document.querySelector('.menuMobile');
+const hamburger = document.querySelector('.nav-hamburger');
 
-hamburger.addEventListener('click', () => {
-  menu.classList.toggle('aperto');
+hamburger.addEventListener('click', function() {
+  hamburger.classList.toggle('open');
+  menu.classList.toggle('open');
 });
 

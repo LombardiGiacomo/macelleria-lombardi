@@ -54,14 +54,34 @@ body {
   color: var(--bordeaux);
 }
 
-.menu-mobile-section {
+.nav-hamburger{
   display: none;
 }
 
-.hamburger {
+.menuMobile{
+  position: absolute;
+  top: 100%; /* parte subito dopo l'header */
+  left: 0;
+  width: 100vw;
+  height: calc(100vh - 100%);
+  background: white;
+  z-index: 9;
   display: none;
-  font-size: 24px;
-  cursor: pointer;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.menuMobile a {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--nero);
+  text-decoration: none;
+}
+
+.menuMobile a:hover {
+  color: var(--bordeaux);
 }
 
 /* Hero */
@@ -159,34 +179,71 @@ section {
     display: none;
   }
 
-  .nav-mobile {
-    flex-direction: column;
-    position: absolute;
-    background: white;
-    left: 0;
-    right: 0;
-    padding: 20px 0;
-    text-align: center;
-  }
-
-  .menu-mobile-section {
-    display: none;
-  }
-
-  .menu-mobile-section {
-    max-height: 0;
-    overflow: hidden;
-    background: white;
-    transition: max-height 0.4s ease;
-  }
-
-  /* Quando aperto, estende l'altezza */
-  .menu-mobile-section.aperto {
-    max-height: 300px; /* quanto spazio vuoi far aprire */
-  }
-
-  .hamburger {
+  .nav-hamburger {
     display: block;
+    margin: 0;
+    width: 2em;
+    height: 1.5em;
+    z-index: 110;
+    /*display: none;*/
+    cursor: pointer;
+    right: 10%;
+    position: absolute;
+    transform: rotate(0deg);
+    transition: all 0.5s cubic-bezier(0.215, 0.610, 0.355, 1);
+  }
+
+  .nav-hamburger span{
+    height: 5px;
+    position: absolute;
+    background: var(--nero);
+    border-radius: 10px;
+    transition: all 0.5s cubic-bezier(0.215, 0.610, 0.355, 1);
+  }
+
+  .nav-hamburger span:nth-child(1){
+    top: 0;
+    width: 100%;
+    left: 0;
+  }
+
+  .nav-hamburger span:nth-child(2){
+    top: 50%;
+    transform: translateY(-50%);
+    width: 60%;
+    right: 0;
+    left: auto;
+  }
+
+  .nav-hamburger span:nth-child(3){
+    bottom: 0;
+    width: 100%;
+    left: 0;
+  }
+
+  .nav-hamburger.open{
+    transform: rotate(180deg);
+  }
+
+  .nav-hamburger.open span:nth-child(1){
+    transform: rotate(45deg);
+    top: 50%;
+    left: 0;
+  }
+
+  .nav-hamburger.open span:nth-child(2){
+    opacity: 0;
+  }
+
+  .nav-hamburger.open span:nth-child(3){
+    transform: rotate(-45deg);
+    top: 50%;
+    bottom: auto;
+    left: 0;
+  }
+
+  .menuMobile.open{
+    display: flex;
   }
 
   .hero {
