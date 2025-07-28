@@ -10,7 +10,7 @@ function openMenu() {
   /*menu.classList.add('open');*/
   setTimeout(() => {
     menuOpen = true;
-  }, 600); // tempo in ms, puoi regolarlo in base al comportamento reale
+  }, 600); // tempo in ms
 }
 
 function closeMenu() {
