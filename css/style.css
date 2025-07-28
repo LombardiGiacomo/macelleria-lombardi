@@ -62,11 +62,10 @@ body {
   justify-content: center;
   align-items: center;
   gap: 2rem;
-  display: none;
-}
-
-.menuMobile.open{
   display: flex;
+  height: 0px;
+  transition: height 1s;
+  overflow: hidden;
 }
 
 .menuMobile a {
@@ -190,7 +189,7 @@ body {
 .orari {
   border: 2px solid var(--bordeaux);
   padding: 30px;
-  max-width: 500px;
+  max-width: 350px;
   margin: 60px auto;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
@@ -202,7 +201,7 @@ body {
   margin-bottom: 20px;
 }
 
-.orari-lista{
+.orari-lista li{
   list-style: none;
   text-align: center;
 }
