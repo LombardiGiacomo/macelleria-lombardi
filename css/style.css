@@ -10,7 +10,7 @@
 
 body {
   margin: 0;
-  font-family: 'Inter', sans-serif;
+  font-family: 'PT Sans Caption',"Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
   color: var(--nero);
   line-height: 1.6;
 }
@@ -34,7 +34,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 0;
+  height: 80px;
 }
 
 .logo {
@@ -44,14 +44,31 @@ body {
 }
 
 .nav a {
+  position: relative;           /* necessario per posizionare ::after */
   margin-left: 50px;
   text-decoration: none;
   color: var(--nero);
   font-weight: 600;
 }
 
+.nav a::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;                 /* distanza dal testo */
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: var(--bordeaux);
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
 .nav a:hover {
   color: var(--bordeaux);
+}
+
+.nav a:hover::after {
+  width: 100%;
+  left: 0;
 }
 
 .menuMobile{
@@ -142,68 +159,121 @@ body {
   left: 0;
 }
 
-/* Hero */
 .hero {
-  color: white;
-  background-color: var(--nero);
-  height: 650px;
-/*
-  background-image: url('../img/hero.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-*/
-  display: flex;
-  justify-content: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
   align-items: center;
-  text-align: center;
+	height: calc(100vh - 60px);
+	padding: 1em;
+	box-sizing: border-box;
+	color: white;
+	background: url(https://images.unsplash.com/photo-1500417148159-68083bd7333a) center center no-repeat;
+	background-size: cover;
 }
 
 .hero h1 {
   font-size: 4.5rem;
-  margin-bottom: 10px;
+  font-family: 'PT Sans Caption',"Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+  position: relative;
+  top: 20%;
+  margin-bottom: 0;
+  padding: 0;
 }
 
 .hero p {
-  font-size: 3rem;
-  margin-bottom: 5px;
+  font-size: 2.5rem;
+  position: relative;
+  margin-top: 0;
+  padding: 0;
 }
 
-.btn-telefono {
+.button {
+	position: relative;
   display: inline-block;
-  margin-top: 20px;
-  padding: 12px 30px;
-  background-color: var(--bordeaux);
+  padding: 0.5em 0.67em;
   color: white;
-  font-weight: 600;
-  border-radius: 5px;
   text-decoration: none;
-  font-size: 1.1rem;
-  transition: background-color 0.3s ease;
+  border: 0.1em solid white;
+  overflow: hidden;
+  transition: color 0.3s ease;
+  z-index: 1;
 }
 
-.btn-telefono:hover {
-  background-color: var(--primary);
+.button-primary {
+  background: white;
+  color: black;
+}
+
+.hero-footer {
+	display: flex;
+	margin-bottom: 5%;
+}
+
+/*
+.button::after {
+  content: "";
+  position: absolute;
+  height: 120%;
+  width: 0;
+  top: 0;
+  left: -10%;
+  background: green;
+  transform: skewX(15deg);
+  z-index: -1;
+  transition: width 0.4s ease;
+}
+
+.button:hover {
+  color: white;
+}
+
+.button:hover::after {
+  width: 120%;
+}
+
+.button-primary::after{
+  background: black;
+}
+
+.button-primary:hover{
+  color: white;
+}
+
+*/
+
+.orari {
+  background-color: var(--bordeaux);
 }
 
 .orari {
-  border: 2px solid var(--bordeaux);
-  padding: 30px;
-  max-width: 350px;
-  margin: 60px auto;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;   /* centra verticalmente */
+  justify-content: center; /* centra orizzontalmente */
+  padding: 15px 0;       /* spazio verticale */
+  min-height: auto;      /* lascia l’altezza adattarsi */
+}
+
+.orari .container {
+  text-align: center; /* centra orizzontalmente */
+  width: 100%;
 }
 
 .orari h2 {
-  text-align: center;
-  font-size: 1.6rem;
-  color: var(--bordeaux);
-  margin-bottom: 20px;
+  font-weight: 200;
+  color: white;
 }
 
-.orari-lista li{
-  list-style: none;
-  text-align: center;
+.orari h3 {
+  margin: 0;
+  color: white;
+  font-weight: 200;
+}
+
+.orari h4 {
+  margin: 0;
+  color: white;
+  font-weight: 200;
 }
 
 /* Sezioni */
@@ -211,6 +281,31 @@ section {
   padding: 60px 20px;
   text-align: center;
   scroll-margin-top: 80px;
+}
+
+.fancy {
+  --b: 2px;   /* control the border thickness */
+  --w: 500px;  /* control the width of the line*/
+  --g: 15px;  /* control the gap */
+  --c: var(--bordeaux);
+ 
+  width: 200px;
+  padding: 0 1em;
+  line-height: 1.6em;
+  color: #fff;
+  background: 
+    conic-gradient(from   45deg at left ,var(--c) 25%,#0000 0) 0,
+    conic-gradient(from -135deg at right,var(--c) 25%,#0000 0) 100%;
+  background-size: 51% 100%;
+  background-repeat: no-repeat;
+  border-image: 
+     linear-gradient(
+       #0000      calc(50% - var(--b)/2),
+       var(--c) 0 calc(50% + var(--b)/2),
+       #0000    0) 
+    1/0 var(--w)/calc(var(--w) + var(--g));
+  margin-inline: auto;
+  font-weight: 200;
 }
 
 .mappa iframe {
@@ -221,13 +316,102 @@ section {
 /* Footer */
 .footer {
   text-align: center;
-  padding: 20px;
+  padding: 10px;
   font-size: 0.9rem;
-  color: var(var(--marmo));
+  color: var(--black);
+  background-color: var(--bordeaux);
 }
 
-.contatti{
-  background-image: url('../img/marmo2.jpg');
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.cards__item {
+  flex: 1 1 calc(100% - 2rem);
+  max-width: 300px;
+}
+
+.card {
+  background-color: var(--marmo);
+  border-color: black;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: transform 0.2s ease;
+  height: 400px;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+/* Titolo fisso sopra slideshow */
+.card__title {
+  color: var(--bordeaux);
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 1rem;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+/* Slideshow container */
+.slideshow {
+  position: relative;
+  width: 100%;
+  height: 320px; /* aumentato per contenere immagine + scritta */
+  overflow: hidden;
+}
+
+/* Ogni slide */
+.slide {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.slide.active {
+  opacity: 1;
+  position: relative;
+}
+
+/* Immagine slide */
+.slide img {
+  width: 100%;
+  height: 260px; /* proporzionato */
+  object-fit: cover;
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/* Descrizione sotto immagine */
+.caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  background: rgba(255, 255, 255, 0.8);
+  color: black;
+  font-size: 1rem;
 }
 
 /* Responsive hamburger */
@@ -242,8 +426,7 @@ section {
   }
 
   .hero {
-    padding: 60px 15px; /* meno spazio verticale */
-    height: 300px;
+    height: calc(50vh - 80px);
   }
 
   .hero h1 {
@@ -254,8 +437,18 @@ section {
     font-size: 1.2rem;
   }
 
-  .btn-telefono {
-    font-size: 1rem;
-    padding: 10px 20px;
+  .fancy {
+    --w: 70px;
+    width: 150px;
+    font-size: 1.1rem;
   }
+
+  .orari h2 {
+    font-size: 1.1rem;
+  }
+
+  .orari h3, .orari h4 {
+    font-size: 1rem;
+  }
+
 }
