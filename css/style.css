@@ -71,31 +71,97 @@ body {
   left: 0;
 }
 
-.menuMobile{
+/* Overlay oscurato */
+.menuOverlay {
+  position: fixed;
+  top: 80px; /* subito sotto l’header */
   left: 0;
   width: 100%;
-  background: white;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-  display: flex;
-  height: 0px;
-  transition: height 0.6s;
-  overflow: hidden;
+  height: calc(100vh - 80px);
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 5;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
 }
 
+/* Attivo */
+.menuOverlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.menuOverlay.active .menuMobile {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.menuOverlay .container {
+  max-width: none;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100%;
+}
+
+/* Menu mobile */
+.menuMobile {
+  background: var(--marmo);
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+
+  /* Transizione iniziale */
+  transform: translateY(-20px);
+  opacity: 0;
+  transition: transform 0.7s ease-in-out, opacity 0.7s ease-in-out;
+}
+
+.menuMobile ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.menuMobile li + li {
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
+}
+/*
 .menuMobile a {
+  position: relative;
+  display: block;
+  width: 100%;
   font-size: 1.5rem;
   font-weight: 600;
   color: var(--nero);
   text-decoration: none;
   text-align: center;
 }
+*/
+.menuMobile li a {
+  position: relative;
+  width: 100%;
+  display: block;
+  padding: 1rem 0;
+  text-align: center;
+  text-decoration: none;
+  color: var(--nero);
+}
 
 .menuMobile a:hover {
   color: var(--bordeaux);
 }
+
 
 .nav-hamburger {
   display: none;
@@ -168,7 +234,7 @@ body {
 	padding: 1em;
 	box-sizing: border-box;
 	color: white;
-	background: url(https://images.unsplash.com/photo-1500417148159-68083bd7333a) center center no-repeat;
+	background: url('../img/Esterno1.jpeg') center center no-repeat;
 	background-size: cover;
 }
 
@@ -208,6 +274,37 @@ body {
 .hero-footer {
 	display: flex;
 	margin-bottom: 5%;
+}
+
+.historySection {
+  display: flex;
+  flex-direction: column; /* mobile: uno sotto l'altro */
+  gap: 2rem; /* spazio tra elementi */
+}
+
+/* Vista mobile */
+.description {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Vista mobile */
+.historyImage img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Vista desktop */
+@media (min-width: 768px) {
+  .historySection {
+    flex-direction: row;
+    align-items: center; /* centra verticalmente */
+  }
+
+  .description, .historyImage {
+    flex: 1; /* occupano metà spazio ciascuno */
+  }
 }
 
 /*
@@ -366,8 +463,11 @@ section {
 .slideshow {
   position: relative;
   width: 100%;
-  height: 320px; /* aumentato per contenere immagine + scritta */
   overflow: hidden;
+}
+
+.card .slideshow {
+  height: 320px; /* aumentato per contenere immagine + scritta */
 }
 
 /* Ogni slide */
@@ -390,11 +490,16 @@ section {
 /* Immagine slide */
 .slide img {
   width: 100%;
-  height: 260px; /* proporzionato */
   object-fit: cover;
   flex-shrink: 0;
   margin: 0;
   padding: 0;
+  display: block;
+  height: 500px;
+}
+
+.card .slide img {
+  height: 260px; /* proporzionato */
 }
 
 /* Descrizione sotto immagine */
@@ -409,7 +514,7 @@ section {
   align-items: center;
   justify-content: center;
   
-  background: rgba(255, 255, 255, 0.8);
+  background: var(--marmo);
   color: black;
   font-size: 1rem;
 }
@@ -435,6 +540,10 @@ section {
 
   .hero p {
     font-size: 1.2rem;
+  }
+
+  .slide img {
+    height: 300px;
   }
 
   .fancy {

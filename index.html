@@ -28,17 +28,23 @@
     </div>
   </header>
 
-  <nav class="menuMobile">
-    <a href="#home">HOME</a>
-    <a href="#chi-siamo">CHI SIAMO</a>
-    <a href="#prodotti">PRODOTTI</a>
-    <a href="#contatti">CONTATTI</a>
-    <a href="#orari">ORARI</a>
-  </nav>
+  <div class="menuOverlay" id="menuOverlay">
+    <div class="container">
+      <nav class="menuMobile" id="menuMobile">
+        <ul>
+          <li><a href="#home">HOME</a></li>
+          <li><a href="#chi-siamo">CHI SIAMO</a></li>
+          <li><a href="#prodotti">PRODOTTI</a></li>
+          <li><a href="#contatti">CONTATTI</a></li>
+          <li><a href="#orari">ORARI</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
 
   <section class="hero" id="home">
-    <h1 class="hero-title">The title of this hero module</h1>
-    <p class=""hero-body">Acdbcjbcdjbcdjbjcdbjcdbjcdb</p>
+    <h1 class="hero-title">Macelleria Lombardi</h1>
+    <p class="hero-body">Acdbcjbcdjbcdjbjcdbjcdbjcdb</p>
     <footer class="hero-footer">
       <a href="tel:+390585785691" class="button button-primary">CHIAMA ORA</a>
       <a class="button" href="https://wa.me/393293949189">WHATSAPP</a>
@@ -49,7 +55,24 @@
   <section class="info" id="chi-siamo">
     <div class="container">
       <h2 class="fancy">Chi siamo</h2>
-      <p>Siamo una macelleria a conduzione familiare, specializzati in carni selezionate e prodotti tipici locali.</p>
+      <div class="historySection">
+        <div class="description">
+          <p>Dal 1950 la Macelleria Lombardi porta in tavola qualità e tradizione. Fondata da Pietro Lombardi, oggi è guidata da Alberto e dalla sua famiglia, 
+            che selezionano ogni giorno carne fresca di prima scelta, salumi e insaccati di produzione propria, oltre a preparati gustosi pronti da cucinare. 
+            Un luogo dove il sapore incontra la passione, e ogni cliente è di casa.
+          </p>
+        </div>
+        <div class="historyImage">
+          <div class="slideshow">
+            <div class="slide active">
+              <img src="./img/AlbeB&N.jpeg" alt="">
+            </div>
+            <div class="slide">
+              <img src="./img/fotoLaura.jpeg" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -60,19 +83,27 @@
       <ul class="cards">
         <li class="cards__item">
           <div class="card">
-            <div class="card__title">Salumi di nostra produzione</div>  <!-- titolo fisso -->
+            <div class="card__title">Salumi e insaccati di nostra produzione</div>  <!-- titolo fisso -->
             <div class="slideshow">
               <div class="slide active">
-                <img src="https://unsplash.it/800/600?image=82" alt="">
-                <div class="caption">Descrizione per foto 1</div>
+                <img src="./img/Pancette2.jpeg" alt="">
+                <div class="caption">Pancette</div>
               </div>
               <div class="slide">
-                <img src="https://unsplash.it/800/600?image=11" alt="">
-                <div class="caption">Descrizione per foto 2</div>
+                <img src="./img/SalamiTeca2.jpeg" alt="">
+                <div class="caption">Salami</div>
               </div>
               <div class="slide">
-                <img src="https://unsplash.it/800/600?image=39" alt="">
-                <div class="caption">Descrizione per foto 3</div>
+                <img src="./img/Salami.jpeg" alt="">
+                <div class="caption">Salami</div>
+              </div>
+              <div class="slide">
+                <img src="./img/Coppa.jpeg" alt="">
+                <div class="caption">Coppa</div>
+              </div>
+              <div class="slide">
+                <img src="./img/Salsicce.jpeg" alt="">
+                <div class="caption">Salsicce</div>
               </div>
             </div>
           </div>
@@ -82,16 +113,24 @@
             <div class="card__title">La nostra carne di qualità selezionata</div>  <!-- titolo fisso -->
             <div class="slideshow">
               <div class="slide active">
-                <img src="https://unsplash.it/800/600?image=82" alt="">
-                <div class="caption">Descrizione per foto 1</div>
+                <img src="./img/Bistecche3.jpeg" alt="">
+                <div class="caption">Bistecche</div>
               </div>
               <div class="slide">
-                <img src="https://unsplash.it/800/600?image=11" alt="">
-                <div class="caption">Descrizione per foto 2</div>
+                <img src="./img/Bistecca1.jpeg" alt="">
+                <div class="caption">Bistecche</div>
               </div>
               <div class="slide">
-                <img src="https://unsplash.it/800/600?image=39" alt="">
-                <div class="caption">Descrizione per foto 3</div>
+                <img src="./img/Bistecca2.jpeg" alt="">
+                <div class="caption">Bistecche</div>
+              </div>
+              <div class="slide">
+                <img src="./img/Bistecca4.jpeg" alt="">
+                <div class="caption">Bistecche</div>
+              </div>
+              <div class="slide">
+                <img src="./img/Bistecca5.jpeg" alt="">
+                <div class="caption">Bistecche</div>
               </div>
             </div>
           </div>
@@ -101,16 +140,24 @@
             <div class="card__title">Preparati pronti da cuocere</div>  <!-- titolo fisso -->
             <div class="slideshow">
               <div class="slide active">
-                <img src="https://unsplash.it/800/600?image=82" alt="">
-                <div class="caption">Descrizione per foto 1</div>
+                <img src="./img/Spiedini2.jpeg" alt="">
+                <div class="caption">Spiedini</div>
               </div>
               <div class="slide">
-                <img src="https://unsplash.it/800/600?image=11" alt="">
-                <div class="caption">Descrizione per foto 2</div>
+                <img src="./img/Cotolette2.jpeg" alt="">
+                <div class="caption">Cotolette</div>
               </div>
               <div class="slide">
-                <img src="https://unsplash.it/800/600?image=39" alt="">
-                <div class="caption">Descrizione per foto 3</div>
+                <img src="./img/Girelle.jpeg" alt="">
+                <div class="caption">Girelle</div>
+              </div>
+              <div class="slide">
+                <img src="./img/Rose.jpeg" alt="">
+                <div class="caption">Rose ..</div>
+              </div>
+              <div class="slide">
+                <img src="./img/Straccetti.jpeg" alt="">
+                <div class="caption">Frigitelli di manzo</div>
               </div>
             </div>
           </div>
@@ -120,16 +167,16 @@
             <div class="card__title">Prodotti locali della Lunigiana</div>  <!-- titolo fisso -->
             <div class="slideshow">
               <div class="slide active">
-                <img src="https://unsplash.it/800/600?image=82" alt="">
-                <div class="caption">Descrizione per foto 1</div>
+                <img src="./img/Panigacci.jpeg" alt="">
+                <div class="caption">Panigacci</div>
               </div>
               <div class="slide">
-                <img src="https://unsplash.it/800/600?image=11" alt="">
-                <div class="caption">Descrizione per foto 2</div>
+                <img src="./img/Pasta.jpeg" alt="">
+                <div class="caption">Pasta</div>
               </div>
               <div class="slide">
-                <img src="https://unsplash.it/800/600?image=39" alt="">
-                <div class="caption">Descrizione per foto 3</div>
+                <img src="./img/MensolaGenerica.jpeg" alt="">
+                <div class="caption">Prodotti vari</div>
               </div>
             </div>
           </div>
@@ -139,16 +186,12 @@
             <div class="card__title">Girarrosto del giovedì e del sabato</div>  <!-- titolo fisso -->
             <div class="slideshow">
               <div class="slide active">
-                <img src="https://unsplash.it/800/600?image=82" alt="">
-                <div class="caption">Descrizione per foto 1</div>
+                <img src="./img/Pollo&Patate.jpeg" alt="">
+                <div class="caption">Pollo e Patate</div>
               </div>
-              <div class="slide">
-                <img src="https://unsplash.it/800/600?image=11" alt="">
-                <div class="caption">Descrizione per foto 2</div>
-              </div>
-              <div class="slide">
-                <img src="https://unsplash.it/800/600?image=39" alt="">
-                <div class="caption">Descrizione per foto 3</div>
+              <div class="slide active">
+                <img src="./img/Pollo&Patate2.jpeg" alt="">
+                <div class="caption">Pollo e Patate</div>
               </div>
             </div>
           </div>
