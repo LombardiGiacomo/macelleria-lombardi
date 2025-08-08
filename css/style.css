@@ -519,7 +519,84 @@ section {
   font-size: 1rem;
 }
 
-/* Responsive hamburger */
+/* Ordina ora section */
+.ordina .historySection {
+  text-align: left;
+}
+
+.ordina .historySection .description p {
+  margin-bottom: 20px;
+}
+
+.multi-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.multi-button .btn-link {
+  flex: 1;
+  position: relative;
+  padding: 1rem 2rem;
+  border: 2px solid black;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 1em;
+  letter-spacing: 1px;
+  box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.1);
+  color: var(--bordeaux);
+  background: transparent;
+  overflow: hidden;
+  display: inline-block; /* Per evitare problemi nei flex container */
+  text-align: center;
+  text-decoration: none;
+}
+
+.multi-button .btn-link:nth-child(2){
+  border-left: none;
+}
+
+.multi-button .btn-link::before,
+.multi-button .btn-link::after {
+  position: absolute;
+  content: "";
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.multi-button .btn-link::after {
+  height: 0;
+  background-color: var(--bordeaux);
+  transition: height 0.5s ease;
+  z-index: -1;
+}
+
+.multi-button .btn-link::before {
+  background-color: #fff;
+  height: 100%;
+  z-index: -2;
+}
+
+.multi-button .btn-link:hover {
+  color: #fff;
+  transition: 0.1s ease;
+}
+
+.multi-button .btn-link:hover::after {
+  height: 100%;
+}
+
+@keyframes towhite {
+  0% {
+    color: inherit;
+  }
+  100% {
+    color: white;
+  }
+}
+
+
 @media (max-width: 480px) {
 
   .nav {
