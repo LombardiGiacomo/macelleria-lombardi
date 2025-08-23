@@ -233,7 +233,7 @@ body {
 	height: calc(100vh - 60px);
 	box-sizing: border-box;
 	color: white;
-	background: url('../img/Bistecche3.jpeg') center center no-repeat;
+	background: url('../img/Bancone.jpeg') center center no-repeat;
 	background-size: cover;
   background-color: rgba(0, 0, 0, 0.2);     /* intensità del “buio” */
   background-blend-mode: multiply;           /* darken o multiply */
