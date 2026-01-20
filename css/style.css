@@ -355,7 +355,7 @@ body {
 
 .hero-footer {
 	display: flex;
-	margin-bottom: 5%;
+	margin-bottom: 10%;
 }
 
 .historySection {
@@ -849,17 +849,21 @@ section {
   .nav-hamburger{
     display: block;
   }
-
+/*
   .hero {
     min-height: calc(50vh);
   }
-
+*/
   .hero h1 {
     font-size: 1.6rem;
   }
 
   .hero p {
     font-size: 1.2rem;
+  }
+
+  .hero-footer {
+    margin-bottom: 40%;
   }
 
   .slide img {
