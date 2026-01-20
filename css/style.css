@@ -304,7 +304,7 @@ body {
   align-items: center;
   min-height: 100vh;
   padding-top: calc(var(--header-h-big) + 40px);  /* spazio per navbar overlay + titolo */
-  padding-bottom: 40px;
+  padding-bottom: 20px;
   box-sizing: border-box;
   width: 100%;
   color: white;
@@ -848,6 +848,10 @@ section {
 
   .nav-hamburger{
     display: block;
+  }
+
+  .hero {
+    min-height: calc(50vh);
   }
 
   .hero h1 {
