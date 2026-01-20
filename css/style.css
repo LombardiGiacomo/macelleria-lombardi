@@ -1,0 +1,888 @@
+:root {
+  --primary: #8b2e2e;
+  --light: #fff9f6;
+  --marmo: #f8f8f8;
+  --accent: #e0c7b3;
+  --bordeaux: #7b2d26;
+  --grigio: #555;
+  --nero: #1c1c1c;
+  --header-h-big: 200px;    /* altezza iniziale */
+  --header-h-small: 100px;  /* altezza dopo scroll */
+  --accent2: #a04f22;
+  --dark: #1e1e1e;
+  --radius: 18px;
+  --border: rgba(0,0,0,.08);
+}
+
+/*
+* {
+  outline: 1px solid rgba(255, 0, 0, 0.25);
+}*/
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'PT Sans Caption',"Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+  color: var(--nero);
+  line-height: 1.6;
+  overflow-x: hidden; 
+  width: 100%;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 20px;
+}
+
+/* Header/Navbar */
+.header {
+  position: fixed;      /* overlay vero */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;        /* sopra la hero */
+  transition:
+    background-color 0.6s ease,
+    border-color     0.6s ease,
+    box-shadow       0.6s ease;
+}
+
+.header.is-scrolled,
+.header.menu-open {
+  background: var(--marmo);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.header.menu-open .nav-hamburger span {
+  background: var(--nero);
+}
+
+.header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: var(--header-h-big);  /* grande all’inizio */
+  transition: height 0.6s ease; /* animazione smooth */
+}
+
+.header.is-scrolled .container {
+  height: var(--header-h-small); /* si rimpicciolisce */
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-img {
+  height: 100px;                 /* logo grande iniziale */
+  transition: height 0.3s ease; /* animazione smooth */
+}
+
+.header.is-scrolled .logo-img {
+  height: 100px;
+}
+
+.nav a {
+  position: relative;           /* necessario per posizionare ::after */
+  margin-left: 50px;
+  text-decoration: none;
+  color: var(--nero);
+  font-weight: 600;
+}
+
+.nav a::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;                 /* distanza dal testo */
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: var(--nero);
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+.nav a:hover {
+  color: var(--nero);
+}
+
+.nav a:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+/* Overlay oscurato */
+.menuOverlay {
+  position: fixed;
+  top: var(--header-h-big); /* parte sotto header grande */
+  height: calc(100vh - var(--header-h-big));
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 5;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+}
+
+.header.is-scrolled + .menuOverlay {
+  top: var(--header-h-small);
+  height: calc(100vh - var(--header-h-small));
+}
+
+/* Attivo */
+.menuOverlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.menuOverlay.active .menuMobile {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.menuOverlay .container {
+  max-width: none;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100%;
+}
+
+/* Menu mobile */
+.menuMobile {
+  background: var(--marmo);
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+
+  /* Transizione iniziale */
+  transform: translateY(-20px);
+  opacity: 0;
+  transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+.menuMobile ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.menuMobile li + li {
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.menuMobile li a {
+  position: relative;
+  width: 100%;
+  display: block;
+  padding: 1rem 0;
+  text-align: center;
+  text-decoration: none;
+  color: var(--nero);
+}
+
+.nav-hamburger {
+  display: none;
+  margin: 0;
+  width: 2em;
+  height: 1.5em;
+  z-index: 110;
+  cursor: pointer;
+  right: 10%;
+  position: absolute;
+  transform: rotate(0deg);
+  transition: all 0.5s cubic-bezier(0.215, 0.610, 0.355, 1);
+}
+
+.nav-hamburger span{
+  height: 5px;
+  position: absolute;
+  background: var(--nero);
+  border-radius: 10px;
+  transition: all 0.5s cubic-bezier(0.215, 0.610, 0.355, 1);
+}
+
+.nav-hamburger span:nth-child(1){
+  top: 0;
+  width: 100%;
+  left: 0;
+}
+
+.nav-hamburger span:nth-child(2){
+  top: 50%;
+  transform: translateY(-50%);
+  width: 60%;
+  right: 0;
+  left: auto;
+}
+
+.nav-hamburger span:nth-child(3){
+  bottom: 0;
+  width: 100%;
+  left: 0;
+}
+
+.nav-hamburger.open{
+  transform: rotate(180deg);
+}
+
+.nav-hamburger.open span:nth-child(1){
+  transform: rotate(45deg);
+  top: 50%;
+  left: 0;
+}
+
+.nav-hamburger.open span:nth-child(2){
+  opacity: 0;
+}
+
+.nav-hamburger.open span:nth-child(3){
+  transform: rotate(-45deg);
+  top: 50%;
+  bottom: auto;
+  left: 0;
+}
+
+/* Header sopra la hero (trasparente) */
+.header--overlay {
+  background: transparent;
+  /*border-bottom: 1px solid rgba(255,255,255,0.15);*/
+}
+
+/* Link bianchi quando overlay (per leggibilità su foto) */
+.header--overlay .nav a {
+  color: white;
+}
+
+.header--overlay .nav a::after {
+  background-color: white;
+}
+
+/* Hamburger bianco quando overlay */
+.header--overlay .nav-hamburger span {
+  background: white;
+}
+
+/* Quando si scorre: header solido come “separato” */
+.header.is-scrolled {
+  backdrop-filter: blur(10px);
+}
+
+/* Link tornano scuri quando scrolled */
+.header.is-scrolled .nav a {
+  color: var(--nero);
+}
+
+.header.is-scrolled .nav a::after {
+  background-color: var(--nero);
+}
+
+.header.is-scrolled .nav-hamburger span {
+  background: var(--nero);
+}
+
+.hero {
+  position: relative; /* utile se in futuro vuoi overlay extra */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* contenuti in alto*/
+  align-items: center;
+  min-height: 100vh;
+  padding-top: calc(var(--header-h-big) + 40px);  /* spazio per navbar overlay + titolo */
+  padding-bottom: 40px;
+  box-sizing: border-box;
+  width: 100%;
+  color: white;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.65) 0%,   /* più scuro in alto */
+      rgba(0, 0, 0, 0.40) 35%,
+      rgba(0, 0, 0, 0.15) 70%,
+      rgba(0, 0, 0, 0) 100%
+    ),
+    url('../img/Bancone.jpeg') center center no-repeat;
+  background-size: cover;
+}
+
+.hero h1 {
+  font-size: 4.5rem;
+  font-family: 'PT Sans Caption',"Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+  position: relative;
+  margin-bottom: 0;
+  padding: 0;
+  text-shadow: 0 6px 20px rgba(0,0,0,.45); /* boost leggibilità */
+}
+
+.hero p {
+  font-size: 2.5rem;
+  position: relative;
+  margin-top: 0;
+  padding: 0;
+}
+
+.button {
+	position: relative;
+  display: inline-block;
+  padding: 0.5em 0.67em;
+  color: white;
+  text-decoration: none;
+  border: 0.1em solid white;
+  overflow: hidden;
+  transition: color 0.3s ease;
+  z-index: 1;
+}
+
+.button-primary {
+  background: white;
+  color: black;
+}
+
+.hero-footer {
+	display: flex;
+	margin-bottom: 5%;
+}
+
+.historySection {
+  display: flex;
+  flex-direction: column; /* mobile: uno sotto l'altro */
+  gap: 2rem; /* spazio tra elementi */
+}
+
+/* Vista mobile */
+.description {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Vista mobile */
+.historyImage img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Vista desktop */
+@media (min-width: 768px) {
+  .historySection {
+    flex-direction: row;
+    align-items: center; /* centra verticalmente */
+  }
+
+  .description, .historyImage {
+    flex: 1; /* occupano metà spazio ciascuno */
+  }
+
+  .hours {
+  display: flex;
+  justify-content: space-between;
+}
+
+}
+
+
+
+.winterHours, .summerHours{
+  max-width: 560px;
+  margin: 0 auto;
+  color: #111;
+}
+
+.rigaOrari{
+  display: flex;
+  justify-content: space-between; /* spinge le due colonne ai lati */
+  gap: 24px;
+  padding: 14px 0;
+}
+
+/* Sezioni */
+section {
+  padding: 0 20px;
+  text-align: center;
+  scroll-margin-top: var(--header-h-small);
+}
+
+
+.fancy {
+  --b: 2px;   /* control the border thickness */
+  --w: 500px;  /* control the width of the line*/
+  --g: 15px;  /* control the gap */
+  --c: var(--bordeaux);
+ 
+  width: 200px;
+  padding: 0 1em;
+  line-height: 1.6em;
+  border-image: 
+     linear-gradient(
+       #0000      calc(50% - var(--b)/2),
+       var(--c) 0 calc(50% + var(--b)/2),
+       #0000    0) 
+    1/0 var(--w)/calc(var(--w) + var(--g));
+  margin-inline: auto;
+  font-weight: 200;
+  text-transform: uppercase;
+  color: rgba(0,0,0,.55);
+  letter-spacing:.12em;
+}
+
+
+.mappa iframe {
+  max-width: 100%;
+  border: none;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 10px;
+  font-size: 0.9rem;
+  color: var(--black);
+  background-color: var(--bordeaux);
+}
+
+
+
+/* Ordina ora section */
+.ordina .historySection {
+  text-align: left;
+}
+
+.ordina .historySection .description p {
+  margin-bottom: 20px;
+}
+
+.multi-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px; /* distanza tra i pulsanti */
+}
+
+.multi-button .btn-link {
+  flex: 1;
+  position: relative;
+  padding: 1rem 2rem;
+  border: 2px solid black;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 1em;
+  letter-spacing: 1px;
+  box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.1);
+  color: var(--bordeaux);
+  background: transparent;
+  overflow: hidden;
+  display: inline-block; /* Per evitare problemi nei flex container */
+  text-align: center;
+  text-decoration: none;
+}
+
+.multi-button .btn-link::before,
+.multi-button .btn-link::after {
+  position: absolute;
+  content: "";
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.multi-button .btn-link::after {
+  height: 0;
+  background-color: var(--bordeaux);
+  transition: height 0.5s ease;
+  z-index: -1;
+}
+
+.multi-button .btn-link::before {
+  background-color: #fff;
+  height: 100%;
+  z-index: -2;
+}
+
+.multi-button .btn-link:hover {
+  color: #fff;
+  transition: 0.1s ease;
+}
+
+.multi-button .btn-link:hover::after {
+  height: 100%;
+}
+
+@keyframes towhite {
+  0% {
+    color: inherit;
+  }
+  100% {
+    color: white;
+  }
+}
+
+/* 1. Contenitore principale */
+.nota-prenotazione {
+  position: relative;
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1.5rem 2rem;
+  background-color: #fffbea;         /* giallo pastello */
+  border: 2px dashed #f0c419;        /* bordo tratteggiato color ocra */
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.nota-prenotazione::before {
+  left: 20px;
+}
+
+.nota-prenotazione::after {
+  right: 20px;
+}
+
+/* 3. Titolo e paragrafo */
+.nota-prenotazione .content h3 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-size: 1.5rem;
+  color: #d17e00;                     /* tonalità ocra scuro */
+  text-align: center;
+}
+
+.nota-prenotazione .content p {
+  margin: 0;
+  line-height: 1.6;
+  color: #333333;
+  font-size: 1rem;
+  text-align: center;
+}
+
+/* Link alle pagine dei prodotti */
+.row{
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr)); /* 3 colonne desktop */
+  gap: 20px; /* distanza tra box */
+}
+
+.test_box {
+	padding: 0;
+}
+
+.test_box .inner {
+	background: #333;
+	display: block;
+	margin: 10px;
+	overflow: hidden;
+}
+
+.test_box .inner .test_click {
+	-webkit-align-content: center;
+	-ms-flex-line-pack: center;
+	align-content: center;
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
+	background-color: rgba(0,0,0,.1);
+	color: #fff;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	flex-wrap: wrap;
+	height: 300px;
+	mix-blend-mode: normal;
+	text-align: center;
+	text-decoration: none;
+	-webkit-transition: all 300ms ease;
+	transition: all 300ms ease;
+}
+
+.flex_this {
+	-webkit-align-content: center;
+	-ms-flex-line-pack: center;
+	align-content: center;
+	display: inherit;
+	flex-wrap: inherit;
+	height: auto;
+	margin: 0;
+	padding: 10px;
+	-webkit-transition: all 300ms ease;
+	transition: all 300ms ease;
+	width: 100%;
+
+}
+
+.test_box .inner .test_click:hover .flex_this {
+	margin-top: -5px;
+}
+
+.test_title {
+	display: block;
+	font-weight: 700;
+	margin: 0 0 20px;
+	width: 100%;
+}
+
+.test_link {
+	border: 2px solid #fff;
+	display: inline-block;
+	font-size: .8em;
+	font-weight: 700;
+	letter-spacing: .1em;
+	margin: 0 auto;
+	padding: 10px 30px;
+	text-transform: uppercase;
+}
+
+.test_link:hover {
+  background-color: white;
+  color: black;
+}
+
+.box-01 .inner {
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.1) 0%,   /* più scuro in alto */
+      rgba(0, 0, 0, 0.1) 35%,
+      rgba(0, 0, 0, 0.1) 70%,
+      rgba(0, 0, 0, 0.1) 100%
+    ),url('../img/SalumiInsaccati/Pancette2.jpeg');
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.box-02 .inner {
+	background:
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.1) 0%,   /* più scuro in alto */
+      rgba(0, 0, 0, 0.1) 35%,
+      rgba(0, 0, 0, 0.1) 70%,
+      rgba(0, 0, 0, 0.1) 100%
+    ),url('../img/Carni/Bistecche3.jpeg');
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.box-03 .inner {
+	background:
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.1) 0%,   /* più scuro in alto */
+      rgba(0, 0, 0, 0.1) 35%,
+      rgba(0, 0, 0, 0.1) 70%,
+      rgba(0, 0, 0, 0.1) 100%
+    ),url('../img/Preparati/Straccetti.jpeg');
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.box-04 .inner {
+	background:
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.1) 0%,   /* più scuro in alto */
+      rgba(0, 0, 0, 0.1) 35%,
+      rgba(0, 0, 0, 0.1) 70%,
+      rgba(0, 0, 0, 0.1) 100%
+    ),url('../img/ProdottiLocali/MensolaGenerica.jpeg');
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.box-05 .inner {
+	background-image: url('../img/Girarrosto/Pollo&Patate2.jpeg');
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.box-06 .inner {
+	background-image: url('../img/Girarrosto/Porchetta.jpeg');
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+/* CARDS CON PRODOTTI */
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.cards__item {
+  flex: 1 1 calc(100% - 2rem);
+  max-width: 300px;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 20px;                 /* più morbido */
+  box-shadow: 
+    0 10px 25px rgba(0,0,0,0.08),
+    0 2px 6px rgba(0,0,0,0.04);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: 
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.card img {
+  /*height: 100%;*/
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 18px 40px rgba(0,0,0,0.12),
+    0 6px 14px rgba(0,0,0,0.08);
+}
+
+/* Titolo fisso sopra slideshow */
+.card__title {
+  color: var(--bordeaux);
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 1rem;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+/* Slideshow container */
+.slideshow {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Ogni slide */
+.slide {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.slide.active {
+  opacity: 1;
+  position: relative;
+}
+
+/* Immagine slide */
+.slide img {
+  width: 100%;
+  object-fit: cover;
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0;
+  display: block;
+  height: 500px;
+}
+
+/* Descrizione sotto immagine */
+.caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  background: var(--marmo);
+  color: black;
+  font-size: 1rem;
+}
+
+.headerProdotti {
+  background: var(--marmo);
+  border-bottom: 1px solid #eee;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.headerProdotti .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: var(--header-h-small);
+}
+
+.prodotti {
+  top: 30px;
+}
+
+@media (max-width: 480px) {
+
+  #nav-index {
+    display: none;
+  }
+
+  .nav-hamburger{
+    display: block;
+  }
+
+  .hero h1 {
+    font-size: 1.6rem;
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+  }
+
+  .slide img {
+    height: 300px;
+  }
+
+  .fancy {
+    --w: 70px;
+    width: 150px;
+    font-size: 1.1rem;
+  }
+
+  .orari h2 {
+    font-size: 1.1rem;
+  }
+
+  .orari h3, .orari h4 {
+    font-size: 1rem;
+  }
+
+  .EstivoInvernale div:nth-child(1){
+    margin-right: 0;
+    border-bottom: none;
+  }
+
+  .row{
+    grid-template-columns: 1fr;
+  }
+
+}
