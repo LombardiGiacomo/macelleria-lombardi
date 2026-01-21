@@ -25,7 +25,7 @@
 
 body {
   margin: 0;
-  font-family: 'PT Sans Caption',"Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+  font-family: 'Roboto','Helvetica Neue', Helvetica, Arial, sans-serif;
   color: var(--nero);
   line-height: 1.6;
   overflow-x: hidden; 
@@ -573,7 +573,6 @@ section {
   margin: 0;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr)); /* 3 colonne desktop */
-  gap: 20px; /* distanza tra box */
 }
 
 .test_box {
@@ -720,53 +719,88 @@ section {
 
 /* CARDS CON PRODOTTI */
 .cards {
-  display: flex;
-  flex-wrap: wrap;
   list-style: none;
   margin: 0;
   padding: 0;
-  gap: 1rem;
-  justify-content: center;
+
+  display: grid;
+  gap: 20px;
+
+  /* 1 colonna su mobile */
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+  }
+  /* centra la “griglia” e limita larghezza */
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
+/* ogni item non deve fare flex qui */
 .cards__item {
-  flex: 1 1 calc(100% - 2rem);
-  max-width: 300px;
+  margin: 0;
+  padding: 0;
 }
 
+/* la card: altezza uniforme */
 .card {
-  background-color: #ffffff;
-  border-radius: 20px;                 /* più morbido */
-  box-shadow: 
-    0 10px 25px rgba(0,0,0,0.08),
-    0 2px 6px rgba(0,0,0,0.04);
+  background: var(--marmo);
+  border-radius: 0.25rem;
+  box-shadow: 0 20px 40px -14px rgba(0,0,0,0.25);
+  overflow: hidden;
+
   display: flex;
   flex-direction: column;
-  overflow: hidden;
-  transition: 
-    transform 0.35s ease,
-    box-shadow 0.35s ease;
+
+  /* altezza uguale per tutte */
+  height: 420px;
 }
 
-.card img {
-  /*height: 100%;*/
+/* contenuto */
+.card__content {
+  padding: 16px;
+
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0; /* importante per il clamp/overflow */
+}
+
+/* immagine come background */
+.card__image {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  /* altezza immagine (fissa e coerente) */
+  height: 250px;
+}
+
+.card__title {
+  color: #696969;
+  font-size: 1.25rem;
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin: 0 0 10px;
+}
+
+/* testo: tronca e non cambia altezza card */
+.card__text {
+  margin: 0;
+  color: #444;
+  font-size: 0.95rem;
+  line-height: 1.5;
+
+  /* tronca a righe fisse */
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4; /* cambia numero righe */
 }
 
 .card:hover {
   transform: translateY(-6px);
-  box-shadow:
-    0 18px 40px rgba(0,0,0,0.12),
-    0 6px 14px rgba(0,0,0,0.08);
-}
-
-/* Titolo fisso sopra slideshow */
-.card__title {
-  color: var(--bordeaux);
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin: 1rem;
-  text-transform: uppercase;
-  flex-shrink: 0;
 }
 
 /* Slideshow container */
@@ -893,4 +927,61 @@ section {
     grid-template-columns: 1fr;
   }
 
+}
+
+.flexbox{
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-flex-wrap: wrap;
+	flex-wrap: wrap;
+	height: 100vw;
+  
+  &:hover{
+    img {
+      opacity:0.28;
+    }
+  }
+
+  .item{
+    position:relative;
+    width: 33.33%;  
+    img{
+      width: 100%;
+      display: block;
+      transition:all .8s;
+    }
+    .title{
+      position:absolute;
+      top:48%;
+      left:0;
+      width:100%;
+      padding:0 3%;
+      font-size:30px;
+      text-shadow:0 0 8px rgba(0,0,0,0.42);
+    }
+    &:hover{
+      img{
+        opacity:1;
+      }
+    }
+  }
+}
+
+@media ( max-width : 860px ){
+  .flexbox{
+    height:220vw;
+    .item{
+      width:50%;
+    }
+  }
+}
+@media ( max-width : 667px ){
+  .flexbox{
+    height:auto;
+    .item{
+      width:100%;
+    }
+  }
 }
