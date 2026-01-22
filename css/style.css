@@ -14,11 +14,6 @@
   --border: rgba(0,0,0,.08);
 }
 
-/*
-* {
-  outline: 1px solid rgba(255, 0, 0, 0.25);
-}*/
-
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -79,12 +74,12 @@ body {
 }
 
 .logo-img {
-  height: 100px;                 /* logo grande iniziale */
+  height: 200px;                 /* logo grande iniziale */
   transition: height 0.3s ease; /* animazione smooth */
 }
 
 .header.is-scrolled .logo-img {
-  height: 100px;
+  height: 120px;
 }
 
 .nav a {
@@ -320,8 +315,15 @@ body {
   background-size: cover;
 }
 
+.hero-line{
+  font-family: 'Allura', cursive;
+  font-size: 5rem;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+
 .hero h1 {
-  font-size: 4.5rem;
+  font-size: 3rem;
   font-family: 'PT Sans Caption',"Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
   position: relative;
   margin-bottom: 0;
@@ -835,7 +837,7 @@ section {
   margin: 0;
   padding: 0;
   display: block;
-  height: 500px;
+  height: 400px;
 }
 
 /* Descrizione sotto immagine */
@@ -870,6 +872,15 @@ section {
   height: var(--header-h-small);
 }
 
+.logo_prodotti {
+  display: flex;
+  align-items: center;
+}
+
+.logo_prodotti img{
+  height: 120px;
+}
+
 .prodotti {
   top: 30px;
 }
@@ -888,6 +899,9 @@ section {
     min-height: calc(50vh);
   }
 */
+
+  .hero-line { font-size: 2.6rem; }
+
   .hero h1 {
     font-size: 1.6rem;
   }
@@ -937,12 +951,7 @@ section {
   -webkit-flex-wrap: wrap;
 	flex-wrap: wrap;
 	height: 100vw;
-  
-  &:hover{
-    img {
-      opacity:0.28;
-    }
-  }
+  background-image: url('../img/marmo2.jpg');
 
   .item{
     position:relative;
@@ -950,21 +959,6 @@ section {
     img{
       width: 100%;
       display: block;
-      transition:all .8s;
-    }
-    .title{
-      position:absolute;
-      top:48%;
-      left:0;
-      width:100%;
-      padding:0 3%;
-      font-size:30px;
-      text-shadow:0 0 8px rgba(0,0,0,0.42);
-    }
-    &:hover{
-      img{
-        opacity:1;
-      }
     }
   }
 }
