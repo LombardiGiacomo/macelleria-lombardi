@@ -74,7 +74,7 @@ body {
 }
 
 .logo-img {
-  height: 200px;                 /* logo grande iniziale */
+  height: 180px;                 /* logo grande iniziale */
   transition: height 0.3s ease; /* animazione smooth */
 }
 
