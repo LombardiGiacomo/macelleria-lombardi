@@ -1,5 +1,5 @@
 :root {
-  --primary: #8b2e2e;
+  --primary: #863a34;
   --light: #fff9f6;
   --marmo: #f8f8f8;
   --accent: #e0c7b3;
@@ -82,9 +82,15 @@ body {
   height: 120px;
 }
 
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
 .nav a {
   position: relative;           /* necessario per posizionare ::after */
-  margin-left: 50px;
+  margin-left: 0;
   text-decoration: none;
   color: var(--nero);
   font-weight: 600;
@@ -424,7 +430,7 @@ section {
   --b: 2px;   /* control the border thickness */
   --w: 500px;  /* control the width of the line*/
   --g: 15px;  /* control the gap */
-  --c: var(--bordeaux);
+  --c: var(--primary);
  
   width: 200px;
   padding: 0 1em;
@@ -454,7 +460,7 @@ section {
   padding: 10px;
   font-size: 0.9rem;
   color: var(--black);
-  background-color: var(--bordeaux);
+  background-color: var(--primary);
 }
 
 
@@ -485,7 +491,7 @@ section {
   font-size: 1em;
   letter-spacing: 1px;
   box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.1);
-  color: var(--bordeaux);
+  color: var(--primary);
   background: transparent;
   overflow: hidden;
   display: inline-block; /* Per evitare problemi nei flex container */
@@ -504,7 +510,7 @@ section {
 
 .multi-button .btn-link::after {
   height: 0;
-  background-color: var(--bordeaux);
+  background-color: var(--primary);
   transition: height 0.5s ease;
   z-index: -1;
 }
@@ -531,6 +537,24 @@ section {
   100% {
     color: white;
   }
+}
+
+.girarrosto-text {
+  max-width: 800px;
+  margin: 0 auto 40px auto;
+  text-align: center;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #333;
+}
+
+.girarrosto-text p {
+  margin-bottom: 12px;
+}
+
+.girarrosto-text strong {
+  color: #863a34; /* rosso carne */
+  font-weight: 600;
 }
 
 /* 1. Contenitore principale */
