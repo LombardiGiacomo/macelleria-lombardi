@@ -557,43 +557,6 @@ section {
   font-weight: 600;
 }
 
-/* 1. Contenitore principale */
-.nota-prenotazione {
-  position: relative;
-  max-width: 600px;
-  margin: 2rem auto;
-  padding: 1.5rem 2rem;
-  background-color: #fffbea;         /* giallo pastello */
-  border: 2px dashed #f0c419;        /* bordo tratteggiato color ocra */
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.nota-prenotazione::before {
-  left: 20px;
-}
-
-.nota-prenotazione::after {
-  right: 20px;
-}
-
-/* 3. Titolo e paragrafo */
-.nota-prenotazione .content h3 {
-  margin-top: 0;
-  margin-bottom: 0.75rem;
-  font-size: 1.5rem;
-  color: #d17e00;                     /* tonalità ocra scuro */
-  text-align: center;
-}
-
-.nota-prenotazione .content p {
-  margin: 0;
-  line-height: 1.6;
-  color: #333333;
-  font-size: 1rem;
-  text-align: center;
-}
-
 /* Link alle pagine dei prodotti */
 .row{
   margin: 0;
