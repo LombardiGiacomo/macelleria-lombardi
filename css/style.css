@@ -403,8 +403,6 @@ body {
 
 }
 
-
-
 .winterHours, .summerHours{
   max-width: 560px;
   margin: 0 auto;
@@ -427,25 +425,27 @@ section {
 
 
 .fancy {
-  --b: 2px;   /* control the border thickness */
-  --w: 500px;  /* control the width of the line*/
-  --g: 15px;  /* control the gap */
+  --b: 2px;
+  --g: 15px;
   --c: var(--primary);
- 
-  width: 200px;
-  padding: 0 1em;
-  line-height: 1.6em;
-  border-image: 
-     linear-gradient(
-       #0000      calc(50% - var(--b)/2),
-       var(--c) 0 calc(50% + var(--b)/2),
-       #0000    0) 
-    1/0 var(--w)/calc(var(--w) + var(--g));
-  margin-inline: auto;
-  font-weight: 200;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--g);
+
+  font-weight: bold;
   text-transform: uppercase;
-  color: rgba(0,0,0,.55);
-  letter-spacing:.12em;
+  color: var(--primary);
+  letter-spacing: .12em;
+}
+
+.fancy::before,
+.fancy::after {
+  content: "";
+  flex: 1; /* riempie lo spazio fino ai margini */
+  height: var(--b);
+  background-color: var(--c);
 }
 
 
@@ -460,7 +460,8 @@ section {
   padding: 10px;
   font-size: 0.9rem;
   color: var(--black);
-  background-color: var(--primary);
+  background-color: black;
+  color: white;
 }
 
 
@@ -600,15 +601,17 @@ section {
 	-webkit-align-content: center;
 	-ms-flex-line-pack: center;
 	align-content: center;
-	display: inherit;
+	display: flex;
+  flex-direction: column;
 	flex-wrap: inherit;
-	height: auto;
+	height: 100%;
 	margin: 0;
 	padding: 10px;
 	-webkit-transition: all 300ms ease;
 	transition: all 300ms ease;
 	width: 100%;
-
+  justify-content: center;  /* centra verticalmente */
+  align-items: center;      /* centra orizzontalmente */
 }
 
 .test_box .inner .test_click:hover .flex_this {
@@ -628,7 +631,8 @@ section {
 	font-size: .8em;
 	font-weight: 700;
 	letter-spacing: .1em;
-	margin: 0 auto;
+	margin-top: auto;
+  align-self: center;
 	padding: 10px 30px;
 	text-transform: uppercase;
 }
@@ -753,6 +757,7 @@ section {
   flex-direction: column;
   flex: 1 1 auto;
   min-height: 0; /* importante per il clamp/overflow */
+  text-align: left;
 }
 
 /* immagine come background */
@@ -766,7 +771,7 @@ section {
 }
 
 .card__title {
-  color: #696969;
+  color: var(--primary);
   font-size: 1.25rem;
   font-weight: 300;
   letter-spacing: 2px;
@@ -776,16 +781,14 @@ section {
 
 /* testo: tronca e non cambia altezza card */
 .card__text {
-  margin: 0;
-  color: #444;
+  font-family: 'Inter', sans-serif;
   font-size: 0.95rem;
+  color: #555;
+  margin: 0;
   line-height: 1.5;
 
   /* tronca a righe fisse */
   overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 4; /* cambia numero righe */
 }
 
 .card:hover {
@@ -907,7 +910,6 @@ section {
 
   .fancy {
     --w: 70px;
-    width: 150px;
     font-size: 1.1rem;
   }
 
